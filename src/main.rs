@@ -164,7 +164,6 @@ async fn main() -> std::io::Result<()> {
         // Directly use the Arc<Config> without additional wrapping
         .collect::<HashMap<String, Arc<Config>>>();
 
-    // Assuming `configs` is correctly a HashMap<String, Arc<Config>>
     let initial_environment = "dev".to_string();
     let initial_config = configs.get(&initial_environment)
         .map(|config| Arc::clone(config)) // Clone the Arc if present
@@ -176,9 +175,9 @@ async fn main() -> std::io::Result<()> {
 
     // Now, initial_config is an Arc<Config> as expected
     let (tx, rx) = watch::channel::<(String, Arc<Config>)>((initial_environment.clone(), initial_config.clone())); // Clone here to keep ownership as well
-        // Preparing a Publisher with the loaded configurations
+    // Preparing a Publisher with the loaded configurations
     let publisher = Arc::new(Mutex::new(Publisher::new(
-        tx, // Correctly pass the sender here
+        tx, 
         configs,
         initial_environment,
         Some(root_logger.clone())
