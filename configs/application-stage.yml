@@ -1,0 +1,4 @@
+ball_color: "red"
+ball_size: 25
+ball_speed: 5
+number_of_balls: 40

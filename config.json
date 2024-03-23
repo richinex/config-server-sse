@@ -1,0 +1,9 @@
+{
+    "env": "dev",
+    "settings": {
+      "ball_color": "blue",
+      "ball_size": 25,
+      "ball_speed": 50,
+      "number_of_balls": 10
+    }
+  }
